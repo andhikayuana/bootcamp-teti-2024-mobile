@@ -1,8 +1,12 @@
 package ugm.bootcamp.teti.todo.data.repository
 
+import ugm.bootcamp.teti.todo.data.model.User
+
 interface AuthRepository {
 
     suspend fun isAuthenticated(): Boolean
+
+    suspend fun getAuthenticatedUser(): User
 
     suspend fun register(
         email: String,
@@ -33,6 +37,10 @@ interface AuthRepository {
 
         override suspend fun isAuthenticated(): Boolean {
             return authenticatedUser.isNullOrBlank()
+        }
+
+        override suspend fun getAuthenticatedUser(): User {
+            return User(authenticatedUser ?: "guest")
         }
 
         override suspend fun register(email: String, password: String): Boolean {

@@ -1,7 +1,6 @@
 package ugm.bootcamp.teti.todo.ui.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +62,8 @@ class LoginFragment : Fragment() {
                     effect.message,
                     Toast.LENGTH_SHORT
                 ).show()
+
+                else -> {}
             }
         })
     }

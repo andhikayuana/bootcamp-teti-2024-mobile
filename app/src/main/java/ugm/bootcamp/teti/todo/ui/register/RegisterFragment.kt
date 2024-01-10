@@ -64,6 +64,8 @@ class RegisterFragment : Fragment() {
                     effect.message,
                     Toast.LENGTH_SHORT
                 ).show()
+
+                else -> {}
             }
         })
     }

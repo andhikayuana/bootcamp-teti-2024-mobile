@@ -18,6 +18,7 @@ gson = "2.10.1"
 google-services = "4.4.0"
 legacy-support-v4 = "1.0.0"
 lifecycle-livedata-ktx = "2.6.2"
+#activity-ktx = "1.8.2"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -41,8 +42,7 @@ firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy-support-v4" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
-
-
+#activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
 
 [bundles]
 navigation = ["navigation-fragment", "navigation-ui"]
