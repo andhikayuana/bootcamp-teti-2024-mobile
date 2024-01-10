@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Todo App UGM</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_register">Register</string>
+    <string name="label_password_confirm">Password Confirm</string>
+    <string name="label_title">Title</string>
+    <string name="label_description">Description</string>
+    <string name="label_create">Create</string>
+    <string name="label_update">Update</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_your_todos">Your Todos</string>
+    <string name="label_todo_add">Add Your Todo</string>
+    <string name="label_todo_update">Update Your Todo</string>
 </resources>
