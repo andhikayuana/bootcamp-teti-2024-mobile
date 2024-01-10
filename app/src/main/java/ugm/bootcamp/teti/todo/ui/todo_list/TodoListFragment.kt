@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ugm.bootcamp.teti.todo.data.model.Todo
 import ugm.bootcamp.teti.todo.databinding.FragmentTodoListBinding
-import ugm.bootcamp.teti.todo.ui.todo_list.adapter.TodoAdapter
 
 class TodoListFragment : Fragment() {
 
@@ -19,7 +18,7 @@ class TodoListFragment : Fragment() {
     private var _binding: FragmentTodoListBinding? = null
     private val binding get() = _binding!!
     private val todoAdapter by lazy {
-        TodoAdapter(
+        TodoListAdapter(
             onTodoClick = ::onTodoClick,
             onTodoLongClick = ::onTodoLongClick,
             onTodoDoneChanged = ::onTodoDoneChanged
