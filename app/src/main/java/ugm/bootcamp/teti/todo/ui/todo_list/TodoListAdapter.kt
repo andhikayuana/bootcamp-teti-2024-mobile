@@ -1,4 +1,4 @@
-package ugm.bootcamp.teti.todo.ui.todo_list.adapter
+package ugm.bootcamp.teti.todo.ui.todo_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,11 +12,12 @@ typealias OnTodoClick = (todo: Todo) -> Unit
 typealias OnTodoLongClick = (todo: Todo) -> Unit
 typealias OnTodoDoneChanged = (todo: Todo) -> Unit
 
-class TodoAdapter(
+
+class TodoListAdapter(
     private val onTodoClick: OnTodoClick,
     private val onTodoLongClick: OnTodoLongClick,
     private val onTodoDoneChanged: OnTodoDoneChanged,
-) : ListAdapter<Todo, TodoAdapter.ViewHolder>(diffCallback) {
+) : ListAdapter<Todo, TodoListAdapter.ViewHolder>(diffCallback) {
 
     companion object {
         val diffCallback = object : DiffUtil.ItemCallback<Todo>() {
