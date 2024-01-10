@@ -17,12 +17,12 @@ class RegisterViewModel(
     private val passwordConfirmValidator: PasswordConfirmValidator
 ) : ViewModel() {
 
-    val registerState: MutableLiveData<RegisterState> by lazy {
-        MutableLiveData<RegisterState>(RegisterState())
-    }
-    val uiEffect: MutableLiveData<UiEffect> by lazy {
-        MutableLiveData<UiEffect>()
-    }
+        val registerState: MutableLiveData<RegisterState> by lazy {
+            MutableLiveData<RegisterState>(RegisterState())
+        }
+        val uiEffect: MutableLiveData<UiEffect> by lazy {
+            MutableLiveData<UiEffect>()
+        }
 
     fun onEvent(event: RegisterEvent) {
         when (event) {

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.TodoAppUGM" parent="Base.Theme.TodoAppUGM" />
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
