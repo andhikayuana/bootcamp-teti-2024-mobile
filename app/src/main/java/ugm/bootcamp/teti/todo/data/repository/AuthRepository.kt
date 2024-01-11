@@ -36,7 +36,7 @@ interface AuthRepository {
         private var authenticatedUser: String? = null
 
         override suspend fun isAuthenticated(): Boolean {
-            return authenticatedUser.isNullOrBlank()
+            return authenticatedUser != null
         }
 
         override suspend fun getAuthenticatedUser(): User {
