@@ -40,11 +40,7 @@ class TodoListFragment : Fragment() {
     }
 
     private fun onTodoClick(todo: Todo) {
-        findNavController().navigate(
-            TodoListFragmentDirections.actionTodoListFragmentToTodoCreateUpdateFragment(
-                todo
-            )
-        )
+        viewModel.onEvent(TodoListEvent.OnTodoClick(todo))
     }
 
     override fun onCreateView(
@@ -115,17 +111,6 @@ class TodoListFragment : Fragment() {
             viewModel.onEvent(TodoListEvent.OnTodoAddClick)
         }
         viewModel.onEvent(TodoListEvent.OnTodoFetch)
-
-//        (1..10).map {
-//            Todo(
-//                "$id",
-//                "title $it",
-//                "description lorem ipsum dolor sit amet $it\n new line here\nnew line again here"
-//            )
-//        }.let {
-//            todoAdapter.submitList(it)
-//        }
-
     }
 
 }

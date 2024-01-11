@@ -9,7 +9,7 @@ import ugm.bootcamp.teti.todo.util.PasswordValidator
 object AppModule {
 
     private val authRepository = AuthRepository.Impl()
-    private val todoRepository = TodoRepository.Impl()
+    private val todoRepository = TodoRepository.Impl(authRepository)
 
     private val emailValidator = EmailValidator()
     private val passwordValidator = PasswordValidator()
