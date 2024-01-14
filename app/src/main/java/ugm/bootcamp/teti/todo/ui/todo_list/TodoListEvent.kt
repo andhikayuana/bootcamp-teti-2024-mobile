@@ -7,6 +7,7 @@ sealed class TodoListEvent {
     object OnProfileClick : TodoListEvent()
     object OnTodoAddClick : TodoListEvent()
     object OnTodoFetch : TodoListEvent()
+    object OnBannerFetch : TodoListEvent()
 
     data class OnDoneChange(val todo: Todo) : TodoListEvent()
     data class OnTodoClick(val todo: Todo) : TodoListEvent()

@@ -2,11 +2,11 @@ package ugm.bootcamp.teti.todo.ui.todo_list
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -30,6 +30,7 @@ class TodoListFragment : Fragment() {
             onTodoDoneChanged = ::onTodoDoneChanged
         )
     }
+    private val bannerAdapter by lazy { BannerAdapter() }
 
     private fun onTodoDoneChanged(todo: Todo) {
         viewModel.onEvent(TodoListEvent.OnDoneChange(todo))
@@ -64,10 +65,14 @@ class TodoListFragment : Fragment() {
         val appModule = (requireActivity().application as TodoApp).appModule
         viewModel = TodoListViewModel(
             appModule.provideAuthRepository(),
-            appModule.provideTodoRepository()
+            appModule.provideTodoRepository(),
+            appModule.provideBannerRepository()
         )
         viewModel.todoListState.observe(this, Observer { state ->
             todoAdapter.submitList(state.todos)
+            bannerAdapter.submitList(state.imageUrls)
+            binding.vp2Banner.isVisible = state.imageUrls.isNotEmpty()
+
         })
         viewModel.uiEffect.observe(this, Observer { effect ->
             when (effect) {
@@ -107,10 +112,14 @@ class TodoListFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = todoAdapter
         }
+        binding.vp2Banner.apply {
+            adapter = bannerAdapter
+        }
         binding.fabAdd.setOnClickListener {
             viewModel.onEvent(TodoListEvent.OnTodoAddClick)
         }
         viewModel.onEvent(TodoListEvent.OnTodoFetch)
+        viewModel.onEvent(TodoListEvent.OnBannerFetch)
     }
 
 }
