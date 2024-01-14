@@ -36,8 +36,7 @@ class TodoListAdapter(
         private val onTodoClick: OnTodoClick,
         private val onTodoLongClick: OnTodoLongClick,
         private val onTodoDoneChanged: OnTodoDoneChanged
-    ) :
-        RecyclerView.ViewHolder(itemBinding.root) {
+    ) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(todo: Todo) = itemBinding.apply {
             tvTitle.text = todo.title
             tvDescription.text = todo.description

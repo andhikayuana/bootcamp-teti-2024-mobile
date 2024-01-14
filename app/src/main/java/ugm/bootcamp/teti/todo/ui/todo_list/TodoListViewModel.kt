@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ugm.bootcamp.teti.todo.data.repository.AuthRepository
+import ugm.bootcamp.teti.todo.data.repository.BannerRepository
 import ugm.bootcamp.teti.todo.data.repository.TodoRepository
 import ugm.bootcamp.teti.todo.ui.profile.ProfileActivity
 import ugm.bootcamp.teti.todo.util.UiEffect
@@ -12,6 +13,7 @@ import ugm.bootcamp.teti.todo.util.UiEffect
 class TodoListViewModel(
     private val authRepository: AuthRepository,
     private val todoRepository: TodoRepository,
+    private val bannerRepository: BannerRepository,
 ) : ViewModel() {
 
     val todoListState: MutableLiveData<TodoListState> by lazy {
@@ -43,6 +45,7 @@ class TodoListViewModel(
                     }
                 }
             }
+
             TodoListEvent.OnLogoutClick -> {
                 viewModelScope.launch {
                     try {
@@ -65,6 +68,7 @@ class TodoListViewModel(
             TodoListEvent.OnProfileClick -> uiEffect.postValue(
                 UiEffect.NavigateActivity(ProfileActivity::class.java.name)
             )
+
             is TodoListEvent.OnTodoClick -> uiEffect.postValue(
                 UiEffect.Navigate(
                     TodoListFragmentDirections.actionTodoListFragmentToTodoCreateUpdateFragment(
@@ -100,6 +104,13 @@ class TodoListViewModel(
                             )
                         )
                     }
+                }
+            }
+
+            TodoListEvent.OnBannerFetch -> {
+                viewModelScope.launch {
+                    val imageUrls = bannerRepository.getBanners()
+                    todoListState.postValue(todoListState.value?.copy(imageUrls = imageUrls))
                 }
             }
         }
