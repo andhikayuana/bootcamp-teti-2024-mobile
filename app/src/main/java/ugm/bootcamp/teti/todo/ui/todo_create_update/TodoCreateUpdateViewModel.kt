@@ -22,12 +22,20 @@ class TodoCreateUpdateViewModel(
     fun onEvent(event: TodoCreateUpdateEvent) {
         when (event) {
             TodoCreateUpdateEvent.OnCreateOrUpdateClick -> {
-                viewModelScope.launch {
-                    todoCreateUpdateState.value?.let {
-                        todoRepository.createOrUpdate(it)
+                try {
+                    viewModelScope.launch {
+                        todoCreateUpdateState.value?.let {
+                            todoRepository.createOrUpdate(it)
+                        }
                     }
+                    uiEffect.postValue(UiEffect.PopBackStack)
+                } catch (e: Exception) {
+                    uiEffect.postValue(
+                        UiEffect.ShowToast(
+                            e.message ?: "Oops, something went wrong!"
+                        )
+                    )
                 }
-                uiEffect.postValue(UiEffect.PopBackStack)
             }
 
             is TodoCreateUpdateEvent.OnDescriptionChange -> {
