@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.bundles.firebase.products)
     implementation(libs.legacy.support.v4)
     implementation(libs.lifecycle.livedata.ktx)
-//    implementation(libs.activity.ktx)
+    implementation(libs.bundles.firebase.products)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

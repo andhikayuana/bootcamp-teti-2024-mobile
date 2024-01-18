@@ -1,5 +1,8 @@
 package ugm.bootcamp.teti.todo.di
 
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ugm.bootcamp.teti.todo.data.remote.ApiService
@@ -12,6 +15,8 @@ import ugm.bootcamp.teti.todo.util.PasswordValidator
 
 object AppModule {
 
+    private val firebaseAuth: FirebaseAuth = Firebase.auth
+
     private const val baseUrl = "https://bootcamp-teti-ugm-2024.web.app"
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
@@ -19,7 +24,7 @@ object AppModule {
         .build()
     private val apiService: ApiService = retrofit.create(ApiService::class.java)
 
-    private val authRepository = AuthRepository.Impl()
+    private val authRepository = AuthRepository.Impl(firebaseAuth)
     private val todoRepository = TodoRepository.Impl(authRepository)
     private val bannerRepository = BannerRepository.Impl(apiService)
 
