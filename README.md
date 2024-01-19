@@ -13,6 +13,7 @@ you can check the final implementation inside `main` branch
 - Git
 - Android Studio Hedgehog | 2023.1.1
 - JDK 17
+- Firebase
 
 
 ## How to Run (Local)
