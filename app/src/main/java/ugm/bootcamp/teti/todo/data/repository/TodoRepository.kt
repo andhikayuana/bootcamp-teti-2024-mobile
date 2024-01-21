@@ -27,8 +27,6 @@ interface TodoRepository {
         private val firebaseFirestore: FirebaseFirestore
     ) : TodoRepository {
 
-        private val todos: MutableMap<String, MutableMap<String, Todo>> = mutableMapOf()
-
         override suspend fun createOrUpdate(todo: Todo) {
             val currentUserEmail = authRepository.getAuthenticatedUser().email
             suspendCoroutine { continuation ->
